@@ -59,10 +59,11 @@ app.get("/questoes", async (req, res) => {
   });
   
   try {
-    const resultado = await db.query("SELECT * FROM questoes"); // Executa uma consulta SQL para selecionar todas as questões
-    const dados = resultado.rows; // Obtém as linhas retornadas pela consulta
-    res.json(dados); // Retorna o resultado da consulta como JSON
-    } catch (e) {
+      const resultado = await db.query("SELECT * FROM questoes"); // Executa uma consulta SQL para selecionar todas as questões
+      const dados = resultado.rows; // Obtém as linhas retornadas pela consulta
+      res.json(dados); // Retorna o resultado da consulta como JSON
+      
+    }catch (e) {
       console.error("Erro ao buscar questões:", e); // Log do erro no servidor
       res.status(500).json({
         erro: "Erro interno do servidor",
