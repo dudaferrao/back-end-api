@@ -68,8 +68,8 @@ app.get("/questoes", async (req, res) => {
       res.status(500).json({
         erro: "Erro interno do servidor",
         mensagem: "Não foi possível buscar as questões",
-      });
-    }
+    });
+  }
 });
 
 // ######
