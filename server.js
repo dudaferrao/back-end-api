@@ -289,17 +289,17 @@ app.post("/imagens", async (req, res) => {
       return res.status(400).json({
         erro: "Dados inválidos",
         mensagem:
-          "Todo o campo contendo o link é obrigatórios.",
+          "O campo contendo o link da imagem é obrigatório",
       });
     }
 
     const db = conectarBD(); // Conecta ao banco de dados
 
     const consulta =
-      "INSERT INTO imagens (link_imagem) VALUES ($1,$2,$3,$4) "; // Consulta SQL para inserir a questão
+      "INSERT INTO imagens (link_imagem) VALUES ($1) "; // Consulta SQL para inserir a questão
     const imagem = [data.link_imagem]; // Array com os valores a serem inseridos
     const resultado = await db.query(consulta, imagem); // Executa a consulta SQL com os valores fornecidos
-    res.status(201).json({ mensagem: "Questão criada com sucesso!" }); // Retorna o resultado da consulta como JSON
+    res.status(201).json({ mensagem: "Imagem criada com sucesso!" }); // Retorna o resultado da consulta como JSON
   } catch (e) {
     console.error("Erro ao inserir imagem:", e); // Log do erro no servidor
     res.status(500).json({
