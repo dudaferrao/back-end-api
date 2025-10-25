@@ -328,13 +328,13 @@ app.put("/imagens/:id", async (req, res) => {
     // Usa o valor enviado ou mantém o valor atual do banco
     data.link_imagem = data.link_imagem || questao[0].link_imagem;
     
-    consulta ="UPDATE imagens SET link_imagem = $1";
+    consulta ="UPDATE imagens SET link_imagem = $1 WHERE id = $2";
     resultado = await db.query(consulta, [
       data.link_imagem,
       id,
     ]);
 
-    res.status(200).json({ message: "Mensagem atualizada com sucesso!" }); // Retorna o resultado da consulta como JSON
+    res.status(200).json({ message: "Imagem atualizada com sucesso!" }); // Retorna o resultado da consulta como JSON
   } catch (e) {
     console.error("Erro ao atualizar imagem:", e); // Log do erro no servidor
     res.status(500).json({
